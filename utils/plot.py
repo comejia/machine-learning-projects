@@ -26,7 +26,8 @@ def scatter(data, x: list, y: str, nrow=1, ncol=1, figsize=(20, 5)):
 
     #for i, feature in enumerate(x):
     for i, ax in enumerate(axs):
-        data.plot.scatter(x=x[i], y=y, ax=ax)
+        if i < len(x):
+            data.plot.scatter(x=x[i], y=y, ax=ax)
 
     plt.show()
 
@@ -49,9 +50,9 @@ def histogram(data, columns: list, nrow=1, ncol=1, figsize=(15, 10), bins=50):
     plt.show()
 
 
-def correlation_heatmap(data, size=(5, 3), annot_kws={"size": 10}, fmt=".2f", cmap="cool"):
+def correlation_heatmap(data, figsize=(5, 3), annot_kws={"size": 10}, fmt=".2f", cmap="cool"):
     correlation = data.corr()
 
-    plt.figure(figsize=size)
+    plt.figure(figsize=figsize)
     sns.heatmap(correlation, annot=True, annot_kws=annot_kws, fmt=fmt, cbar=True, cmap=cmap)
     plt.show()
