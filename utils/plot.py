@@ -24,7 +24,6 @@ def scatter(data, x: list, y: str, nrow=1, ncol=1, figsize=(20, 5)):
     else:
         axs = axs.flatten()
 
-    #for i, feature in enumerate(x):
     for i, ax in enumerate(axs):
         if i < len(x):
             data.plot.scatter(x=x[i], y=y, ax=ax)
